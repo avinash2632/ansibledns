@@ -1,0 +1,15 @@
+$ORIGIN .
+$TTL 604800	; 1 week
+{{ rev_domain }}	IN SOA	{{ shell_out.ansible_facts.ansible_nodename }}. admin.{{ domain }}. (
+				7          ; serial
+				604800     ; refresh (1 week)
+				86400      ; retry (1 day)
+				2419200    ; expire (4 weeks)
+				604800     ; minimum (1 week)
+				)
+			NS	{{ shell_out.ansible_facts.ansible_nodename }}.
+$ORIGIN {{ rev_domain }}.
+$TTL 604800	; 1 week
+1     PTR erl.100.26.111.in-addr.arpa.
+5     PTR ansible.100.26.111.in-addr.arpa.
+11    PTR ns1.100.26.111.in-addr.arpa.
